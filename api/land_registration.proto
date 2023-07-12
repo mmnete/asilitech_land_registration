@@ -1,0 +1,228 @@
+syntax = "proto3";
+
+package com.asilitech.landregistration;
+
+message LandRecord {
+  string titleDeedUrl = 1;
+  OwnerInfo owner = 2;
+  repeated OwnershipChange ownershipHistory = 3;
+  // Add other relevant fields for a land record
+}
+
+message OwnerInfo {
+  string firstName = 1;
+  string lastName = 2;
+  string governmentId = 3;
+  string email = 4;
+  string phoneNumber = 5;
+  string profileImage = 6;
+  // Add other relevant fields for owner information
+}
+
+message OwnershipChange {
+  string previousOwner = 1;
+  string currentOwner = 2;
+  int64 changeDate = 3;
+  // Add other relevant fields for an ownership change
+}
+
+message LandSearchCriteria {
+  string country = 1;
+  string city = 2;
+  string district = 3;
+  string streetAddress = 4;
+  string houseNumber = 5;
+  double minLongitude = 6;
+  double maxLongitude = 7;
+  double minLatitude = 8;
+  double maxLatitude = 9;
+  // Add other relevant fields for search criteria
+}
+
+enum PropertyType {
+  HOUSE = 0;
+  APARTMENT = 1;
+  COMMERCIAL = 2;
+  // Add other property types as needed
+}
+
+service LandRegistrationService {
+  rpc CreateLandRecord(CreateLandRecordRequest) returns (CreateLandRecordResponse) {}
+  rpc GetLandRecord(GetLandRecordRequest) returns (GetLandRecordResponse) {}
+  rpc UpdateLandRecord(UpdateLandRecordRequest) returns (UpdateLandRecordResponse) {}
+  rpc DeleteLandRecord(DeleteLandRecordRequest) returns (DeleteLandRecordResponse) {}
+  rpc SearchLandRecords(SearchLandRecordsRequest) returns (SearchLandRecordsResponse) {}
+
+  // User Management RPCs
+  rpc AddUser(AddUserRequest) returns (AddUserResponse) {}
+  rpc GetUser(GetUserRequest) returns (GetUserResponse) {}
+  rpc UpdateUser(UpdateUserRequest) returns (UpdateUserResponse) {}
+  rpc DeleteUser(DeleteUserRequest) returns (DeleteUserResponse) {}
+  rpc SearchUsers(SearchUsersRequest) returns (SearchUsersResponse) {}
+  // Add other RPCs for user management
+
+  // Ownership Assignment RPCs
+  rpc AssignOwnership(AssignOwnershipRequest) returns (AssignOwnershipResponse) {}
+  rpc GetAssignedOwners(GetAssignedOwnersRequest) returns (GetAssignedOwnersResponse) {}
+  rpc UpdateAssignedOwners(UpdateAssignedOwnersRequest) returns (UpdateAssignedOwnersResponse) {}
+  rpc DeleteAssignedOwners(DeleteAssignedOwnersRequest) returns (DeleteAssignedOwnersResponse) {}
+  // Add other RPCs for ownership assignment
+}
+
+message CreateLandRecordRequest {
+  LandRecord landRecord = 1;
+}
+
+message CreateLandRecordResponse {
+  LandRecord landRecord = 1;
+}
+
+message GetLandRecordRequest {
+  string landRecordId = 1;
+}
+
+message GetLandRecordResponse {
+  LandRecord landRecord = 1;
+}
+
+message UpdateLandRecordRequest {
+  string landRecordId = 1;
+  LandRecord landRecord = 2;
+}
+
+message UpdateLandRecordResponse {
+  LandRecord landRecord = 1;
+}
+
+message DeleteLandRecordRequest {
+  string landRecordId = 1;
+}
+
+message DeleteLandRecordResponse {
+  string message = 1;
+}
+
+message SearchLandRecordsRequest {
+  LandSearchCriteria searchCriteria = 1;
+}
+
+message SearchLandRecordsResponse {
+  repeated LandRecord landRecords = 1;
+}
+
+// User Management Messages
+
+message User {
+  string userId = 1;
+  string firstName = 2;
+  string lastName = 3;
+  string dateOfBirth = 4;
+  string email = 5;
+  string phoneNumber = 6;
+  string profileImage = 7;
+  string governmentId = 8;
+  bool isGovernmentUser = 9;
+  // Add other relevant fields for user information
+}
+
+service UserService {
+  rpc AddUser(AddUserRequest) returns (AddUserResponse) {}
+  rpc GetUser(GetUserRequest) returns (GetUserResponse) {}
+  rpc UpdateUser(UpdateUserRequest) returns (UpdateUserResponse) {}
+  rpc DeleteUser(DeleteUserRequest) returns (DeleteUserResponse) {}
+  rpc SearchUsers(SearchUsersRequest) returns (SearchUsersResponse) {}
+  // Add other RPCs for user management
+}
+
+message AddUserRequest {
+  User user = 1;
+}
+
+message AddUserResponse {
+  User user = 1;
+}
+
+message GetUserRequest {
+  string userId = 1;
+}
+
+message GetUserResponse {
+  User user = 1;
+}
+
+message UpdateUserRequest {
+  string userId = 1;
+  User user = 2;
+}
+
+message UpdateUserResponse {
+  User user = 1;
+}
+
+message DeleteUserRequest {
+  string userId = 1;
+}
+
+message DeleteUserResponse {
+  string message = 1;
+}
+
+message SearchUsersRequest {
+  string searchQuery = 1;
+}
+
+message SearchUsersResponse {
+  repeated User users = 1;
+}
+
+// Ownership Assignment Messages
+
+message Assignment {
+  string assignmentId = 1;
+  string assignedToUserId = 2;
+  repeated string propertyIds = 3;
+  // Add other relevant fields for ownership assignment
+}
+
+service OwnershipAssignmentService {
+  rpc AssignOwnership(AssignOwnershipRequest) returns (AssignOwnershipResponse) {}
+  rpc GetAssignedOwners(GetAssignedOwnersRequest) returns (GetAssignedOwnersResponse) {}
+  rpc UpdateAssignedOwners(UpdateAssignedOwnersRequest) returns (UpdateAssignedOwnersResponse) {}
+  rpc DeleteAssignedOwners(DeleteAssignedOwnersRequest) returns (DeleteAssignedOwnersResponse) {}
+  // Add other RPCs for ownership assignment
+}
+
+message AssignOwnershipRequest {
+  Assignment assignment = 1;
+}
+
+message AssignOwnershipResponse {
+  Assignment assignment = 1;
+}
+
+message GetAssignedOwnersRequest {
+  string assignmentId = 1;
+}
+
+message GetAssignedOwnersResponse {
+  repeated User assignedOwners = 1;
+}
+
+message UpdateAssignedOwnersRequest {
+  string assignmentId = 1;
+  Assignment assignment = 2;
+}
+
+message UpdateAssignedOwnersResponse {
+  Assignment assignment = 1;
+}
+
+message DeleteAssignedOwnersRequest {
+  string assignmentId = 1;
+}
+
+message DeleteAssignedOwnersResponse {
+  string message = 1;
+}
+
+// Add other relevant messages and services as needed
