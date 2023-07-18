@@ -1,0 +1,5 @@
+<input type="text" placeholder="Search..." [(ngModel)]="searchQuery" (input)="onSearch()">
+
+<div class="search-results">
+  <app-search-result-card *ngFor="let result of searchResults" [result]="result"></app-search-result-card>
+</div>
