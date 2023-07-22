@@ -8,6 +8,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AppMaterialModule } from './app.material.module';
 import { NavbarComponent } from './navbar/navbar.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { WelcomeComponent } from './pages/welcome/welcome.component';
 
 const routes: Routes = [
   { path: 'login', component: LogInComponentComponent }
@@ -18,12 +20,13 @@ const routes: Routes = [
   declarations: [
     AppComponent,
     LogInComponentComponent,
+    WelcomeComponent,
     NavbarComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule, RouterModule.forRoot(routes), ReactiveFormsModule, AppMaterialModule
+    FormsModule, RouterModule.forRoot(routes), ReactiveFormsModule, AppMaterialModule, BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
