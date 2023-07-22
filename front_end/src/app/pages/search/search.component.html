@@ -1,0 +1,27 @@
+<!-- search.component.html -->
+
+<div class="search-container" *ngIf="!searchPerformed">
+    <div class="search-box">
+      <input style="width: 60vw; height: 5vh;" matInput placeholder="Owner, house number, plot number, street address, district ...">
+      <button mat-icon-button>
+        <mat-icon>search</mat-icon>
+      </button>
+    </div>
+    <div class="or-divider">OR</div>
+    <button mat-raised-button color="primary" class="here-button" (click)="onHereClicked()">
+      <mat-icon>place</mat-icon>
+      I am here now
+    </button>
+  </div>
+  
+  <div class="search-results" *ngIf="searchPerformed">
+    <!-- Loop over search results and display them as rectangular cards -->
+    <div class="result-card" *ngFor="let result of searchResults">
+      <!-- Replace these placeholders with actual property and owner images -->
+      <img src="property-image-url" alt="Property Image">
+      <img src="owner-image-url" alt="Owner Image">
+      <p class="property-name">{{ result.propertyName }}</p>
+      <p class="property-owner">{{ result.propertyOwner }}</p>
+    </div>
+  </div>
+  

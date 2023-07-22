@@ -10,6 +10,7 @@ import { AppMaterialModule } from './app.material.module';
 import { NavbarComponent } from './navbar/navbar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { WelcomeComponent } from './pages/welcome/welcome.component';
+import { SearchComponent } from './pages/search/search.component';
 
 const routes: Routes = [
   { path: 'login', component: LogInComponentComponent }
@@ -21,6 +22,7 @@ const routes: Routes = [
     AppComponent,
     LogInComponentComponent,
     WelcomeComponent,
+    SearchComponent,
     NavbarComponent
   ],
   imports: [
