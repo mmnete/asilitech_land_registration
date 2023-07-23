@@ -1,27 +1,46 @@
 <!-- search.component.html -->
 
 <div class="search-container" *ngIf="!searchPerformed">
+    <h2>Search for properties</h2>
     <div class="search-box">
-      <input style="width: 60vw; height: 5vh;" matInput placeholder="Owner, house number, plot number, street address, district ...">
-      <button mat-icon-button>
+        <input style="width: 60vw; height: 5vh;" matInput placeholder="Owner, house number, plot number, street address, district ..." (keydown.enter)="onSearch()">
+        <button mat-icon-button (click)="onSearch()">
         <mat-icon>search</mat-icon>
-      </button>
+        </button>
     </div>
     <div class="or-divider">OR</div>
     <button mat-raised-button color="primary" class="here-button" (click)="onHereClicked()">
-      <mat-icon>place</mat-icon>
-      I am here now
+        <mat-icon>place</mat-icon>
+        I am here now
     </button>
-  </div>
-  
-  <div class="search-results" *ngIf="searchPerformed">
+</div>
+
+<!-- search-results.component.html -->
+<div class="back-button" (click)="goBack()">
+    <mat-icon>search</mat-icon>
+</div>
+<div class="result-count" *ngIf="searchPerformed">2 out of 100,000 results.</div>
+<div class="search-results" *ngIf="searchPerformed">
     <!-- Loop over search results and display them as rectangular cards -->
     <div class="result-card" *ngFor="let result of searchResults">
-      <!-- Replace these placeholders with actual property and owner images -->
-      <img src="property-image-url" alt="Property Image">
-      <img src="owner-image-url" alt="Owner Image">
-      <p class="property-name">{{ result.propertyName }}</p>
-      <p class="property-owner">{{ result.propertyOwner }}</p>
+        <!-- Replace these placeholders with actual property and owner images -->
+        <div class="owner-info">
+        <img class='owner-image' src="{{ result.ownerImage }}" alt="Owner Image">
+        <p class="property-owner"><strong>Owner: </strong> {{ result.propertyOwner }}</p>
+        </div>
+        <img src="{{ result.propertyImage }}" class="property-image" alt="Property Image">
+        <div class="property-details">
+        <p><strong>Property Address:</strong> {{ result.propertyAddress }}</p>
+        <p><strong>Ownership Year:</strong> {{ result.ownershipYear }}</p>
+        <p><strong>District Name:</strong> {{ result.districtName }}</p>
+        <!-- Add other property details here -->
+        <a [href]="'https://maps.google.com/maps?q=' + result.latitude + ',' + result.longitude" target="_blank">View on Google Maps</a>
+        </div>
     </div>
-  </div>
+</div>
+  
+  
+  
+  
+  
   

@@ -1,6 +1,7 @@
 // search.component.ts
 
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 interface SearchResult {
   id: number;
@@ -10,6 +11,9 @@ interface SearchResult {
   ownerImage: string;
   latitude: number;
   longitude: number;
+  propertyAddress: string; // New field for property address
+  ownershipYear: string; // New field for ownership year
+  districtName: string; // New field for district name
 }
 
 @Component({
@@ -22,27 +26,42 @@ export class SearchComponent {
   searchPerformed: boolean = false;
   searchResults: SearchResult[] = [];
 
+  fakePropertyOwnerImageUrl  = 'https://static.vecteezy.com/system/resources/thumbnails/021/798/325/original/portrait-of-innocent-and-beautiful-muslim-african-woman-in-hijab-muslim-african-young-woman-in-black-hijab-looking-at-camera-and-smiling-video.jpg';
+  fakePropertyImageUrl = 'https://www.ooba.co.za/app/uploads/2019/08/property-prices.jpg';
+
   fakeData: SearchResult[] = [
     {
       id: 1,
       propertyName: 'Property 1',
-      propertyOwner: 'Owner 1',
-      propertyImage: 'https://fake-property-image-url.com/property1.jpg',
-      ownerImage: 'https://fake-owner-image-url.com/owner1.jpg',
+      propertyOwner: 'Hafsa',
+      propertyImage: this.fakePropertyImageUrl,
+      ownerImage: this.fakePropertyOwnerImageUrl,
       latitude: 12.345,
-      longitude: 34.567
+      longitude: 34.567,
+      propertyAddress: 'House 34, Songea St',
+      ownershipYear: '1998',
+      districtName: 'Ilala',
     },
     {
       id: 2,
       propertyName: 'Property 2',
-      propertyOwner: 'Owner 2',
-      propertyImage: 'https://fake-property-image-url.com/property2.jpg',
-      ownerImage: 'https://fake-owner-image-url.com/owner2.jpg',
+      propertyOwner: 'Amina',
+      propertyImage: this.fakePropertyImageUrl,
+      ownerImage: this.fakePropertyOwnerImageUrl,
       latitude: 12.678,
-      longitude: 34.890
+      longitude: 34.890,
+      propertyAddress: 'House 34, Songea St',
+      ownershipYear: '1998',
+      districtName: 'Ilala',
     },
     // Add more fake data here
   ];
+
+  constructor(private router: Router) { }
+
+  goBack() {
+    this.searchPerformed = false;
+  }
 
   onSearch(): void {
     if (this.searchQuery.trim() === '') {
