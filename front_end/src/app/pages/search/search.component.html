@@ -16,6 +16,9 @@
 </div>
 
 <!-- search-results.component.html -->
+<div class="back-button" (click)="goBack()">
+    <mat-icon>search</mat-icon>
+</div>
 <div class="result-count" *ngIf="searchPerformed">2 out of 100,000 results.</div>
 <div class="search-results" *ngIf="searchPerformed">
     <!-- Loop over search results and display them as rectangular cards -->

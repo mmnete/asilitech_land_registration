@@ -1,6 +1,7 @@
 // search.component.ts
 
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 interface SearchResult {
   id: number;
@@ -55,6 +56,12 @@ export class SearchComponent {
     },
     // Add more fake data here
   ];
+
+  constructor(private router: Router) { }
+
+  goBack() {
+    this.searchPerformed = false;
+  }
 
   onSearch(): void {
     if (this.searchQuery.trim() === '') {
