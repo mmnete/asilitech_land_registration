@@ -22,6 +22,7 @@ interface SearchResult {
   styleUrls: ['./search.component.scss']
 })
 export class SearchComponent {
+  hoveredResultIndex: number | null = null;
   searchQuery: string = '';
   searchPerformed: boolean = false;
   searchResults: SearchResult[] = [];
@@ -126,5 +127,9 @@ export class SearchComponent {
     dist = (dist * 180) / Math.PI;
     dist = dist * 60 * 1.1515; // Distance in miles, adjust conversion factor as needed
     return dist;
+  }
+
+  viewPropertyDetails(propertyId: number) {
+    this.router.navigate(['/property', propertyId]);
   }
 }

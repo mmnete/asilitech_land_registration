@@ -12,6 +12,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { WelcomeComponent } from './pages/welcome/welcome.component';
 import { SearchComponent } from './pages/search/search.component';
 import { RegisterComponent } from './pages/register/register.component';
+import { PropertyViewComponent } from './pages/property-view/property-view.component';
 
 const routes: Routes = [
   { path: 'login', component: LogInComponentComponent }
@@ -25,7 +26,8 @@ const routes: Routes = [
     WelcomeComponent,
     SearchComponent,
     NavbarComponent,
-    RegisterComponent
+    RegisterComponent,
+    PropertyViewComponent,
   ],
   imports: [
     BrowserModule,

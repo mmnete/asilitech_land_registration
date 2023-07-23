@@ -98,3 +98,8 @@
     margin-bottom: 5px;
     font-weight: 500;
   }
+
+  /* styles.css or your component's CSS file */
+.result-card.hovered-result {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Customize the elevation as per your preference */
+  }

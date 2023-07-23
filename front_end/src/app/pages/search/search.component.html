@@ -22,7 +22,11 @@
 <div class="result-count" *ngIf="searchPerformed">2 out of 100,000 results.</div>
 <div class="search-results" *ngIf="searchPerformed">
     <!-- Loop over search results and display them as rectangular cards -->
-    <div class="result-card" *ngFor="let result of searchResults">
+    <div class="result-card" *ngFor="let result of searchResults; let i = index"
+    (mouseover)="hoveredResultIndex = i"
+    (mouseout)="hoveredResultIndex = null"
+    [ngClass]="{ 'hovered-result': hoveredResultIndex === i }"
+    (click)="viewPropertyDetails(result.id)">
         <!-- Replace these placeholders with actual property and owner images -->
         <div class="owner-info">
         <img class='owner-image' src="{{ result.ownerImage }}" alt="Owner Image">
