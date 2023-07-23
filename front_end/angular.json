@@ -28,9 +28,10 @@
             "assets": [
               "src/favicon.ico",
               "src/assets",
-              "../api"
+              "src/api"
             ],
             "styles": [
+              "@angular/material/prebuilt-themes/pink-bluegrey.css",
               "src/styles.scss"
             ],
             "scripts": []
@@ -92,9 +93,10 @@
             "assets": [
               "src/favicon.ico",
               "src/assets", 
-              "../api"
+              "src/api"
             ],
             "styles": [
+              "@angular/material/prebuilt-themes/pink-bluegrey.css",
               "src/styles.scss"
             ],
             "scripts": []

@@ -1,0 +1,21 @@
+.app-container {
+    display: grid;
+    grid-template-rows: 60px 1fr; /* Set the height of the navbar and let the rest fill available space */
+    height: 100vh;
+}
+
+.nav-bar {
+    height: 10vh;
+    overflow: hidden;
+}
+
+.hidden-router {
+    flex: 1 1 auto;
+    display: flex;
+    overflow: hidden;
+}
+
+  .example-card {
+    max-width: 400px;
+  }
+  

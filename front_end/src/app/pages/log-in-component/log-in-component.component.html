@@ -1,0 +1,32 @@
+<form>
+	<div class="login-container">
+		<div class="login-content">
+			<mat-toolbar class="login-toolbar" color="primary">Land Registration</mat-toolbar>
+			<br>
+
+			<mat-card>
+				<form [formGroup]="loginForm" #formDirective="ngForm" (ngSubmit)="onSubmit(loginForm, formDirective)">
+					<mat-form-field>
+						<mat-label> Username </mat-label>
+						<mat-icon matPrefix>people</mat-icon>
+						<input autofocus type="text" matInput placeholder="Username" formControlName="email">
+					</mat-form-field>
+
+					<mat-form-field>
+						<mat-icon matPrefix>lock_outline</mat-icon>
+						<mat-label> Password </mat-label>
+						<input type="password" autocomplete="false" matInput placeholder="Password"
+							formControlName="password">
+					</mat-form-field>
+					<br>
+
+					<button type="submit" mat-raised-button color="primary">LOGIN</button>
+				</form>
+				<br>
+				<span> or <a routerLink='/register'>Register</a></span>
+
+
+
+			</mat-card>
+		</div>
+	</div>

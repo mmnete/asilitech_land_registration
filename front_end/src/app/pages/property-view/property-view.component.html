@@ -1,0 +1,46 @@
+<div class="property-view-container">
+    <h2>{{ propertyData.propertyName }} Details</h2>
+    <mat-accordion>
+      <!-- Expansion panel for the current owner and ownership history -->
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>Current Owner and Ownership History</mat-panel-title>
+        </mat-expansion-panel-header>
+        <div class="owner-details">
+          <img class="owner-image" src="{{ propertyData.ownerImage }}" alt="Owner Image">
+          <p class="property-owner"><strong>Owner:</strong> {{ propertyData.propertyOwner }}</p>
+        </div>
+        <!-- Implement the ownership history here -->
+        <button mat-button (click)="onViewOwnershipHistory()">View Ownership History</button>
+      </mat-expansion-panel>
+  
+      <!-- Expansion panel for the property details -->
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>Property Details</mat-panel-title>
+        </mat-expansion-panel-header>
+        <div class="property-details">
+          <p><strong>Property Address:</strong> {{ propertyData.propertyAddress }}</p>
+          <p><strong>Ownership Year:</strong> {{ propertyData.ownershipYear }}</p>
+          <p><strong>District Name:</strong> {{ propertyData.districtName }}</p>
+          <!-- Add other property details here -->
+          <div class="property-images">
+            <p><strong>Property Images:</strong></p>
+            <img *ngFor="let image of propertyData.propertyImages" [src]="image" alt="Property Image">
+          </div>
+          <p><a [href]="'https://maps.google.com/maps?q=' + propertyData.latitude + ',' + propertyData.longitude" target="_blank">View on Google Maps</a></p>
+        </div>
+      </mat-expansion-panel>
+  
+      <!-- Expansion panel for the title or deed image -->
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>Title/Deed Image</mat-panel-title>
+        </mat-expansion-panel-header>
+        <div class="title-deed-image">
+          <img [src]="propertyData.titleDeedImage" alt="Title/Deed Image">
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+  

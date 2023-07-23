@@ -1,0 +1,105 @@
+/* search.component.scss */
+
+.search-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+  }
+  
+  .search-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  
+  .search-box input {
+    font-size: 18px;
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .or-divider {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .here-button {
+    font-size: 18px;
+  }
+  
+/* CSS for Search Results */
+.search-results {
+    margin-left: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; /* Optional: Adjust the spacing between result cards */
+  }
+  
+  .result-card {
+    flex-basis: 60%;
+    margin-bottom: 1rem;
+    display: flex;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 10px; /* Added padding for each result card */
+  }
+  
+  .owner-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    min-width: 150px;
+  }
+  
+  .owner-image {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+  
+  .property-details {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1; /* Added to make the details section take up remaining space */
+  }
+
+  .property-image {
+    max-width: 200px;
+    max-height: 200px;
+  }
+  
+  /* Align owner image and name at the top */
+  .property-owner {
+    align-self: flex-start;
+  }
+
+  .back-button {
+    margin-top: 30px;
+    margin-left: 20px;
+    margin-bottom: 5px;
+    font-weight: 700;
+  }
+
+  .result-count {
+    margin-top: 10px;
+    margin-left: 20px;
+    margin-bottom: 5px;
+    font-weight: 500;
+  }
+
+  /* styles.css or your component's CSS file */
+.result-card.hovered-result {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Customize the elevation as per your preference */
+  }
